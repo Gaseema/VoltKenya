@@ -20,7 +20,7 @@ jobs:
           sudo chmod -R 755 .
 
       - name: Copy environment file
-        run: cp /var/www/voltkenya/.env .env
+        run: sudo -u ubuntu cp /var/www/voltkenya/.env .env
 
       - name: Install dependencies
         run: sudo -u ubuntu npm install
@@ -36,3 +36,8 @@ jobs:
           sudo -u ubuntu pm2 delete voltkenya || true
           sudo -u ubuntu pm2 start npm --name "voltkenya" -- start
           sudo -u ubuntu pm2 save
+
+      - name: Reset Permissions for next checkout
+        if: always()
+        run: |
+          sudo chown -R github-runner:github-runner .
