@@ -4,7 +4,7 @@ import { verifySession } from "@/lib/auth";
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
   try {
     const session = await verifySession();
@@ -20,8 +20,10 @@ export async function PATCH(
       );
     }
 
+    const { id } = await params;
+
     const transaction = await prisma.transaction.update({
-      where: { id: params.id },
+      where: { id },
       data: { status },
     });
 
