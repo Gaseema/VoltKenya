@@ -14,17 +14,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Fix Permissions
+        run: |
+          sudo chown -R ubuntu:ubuntu .
+          sudo chmod -R 755 .
+
       - name: Copy environment file
         run: cp /var/www/voltkenya/.env .env
 
       - name: Install dependencies
-        run: npm install
+        run: sudo -u ubuntu npm install
 
       - name: Run Prisma Generate
-        run: npx prisma generate
+        run: sudo -u ubuntu npx prisma generate
 
       - name: Build application
-        run: npm run build
+        run: sudo -u ubuntu npm run build
 
       - name: Deploy with PM2
         run: |
