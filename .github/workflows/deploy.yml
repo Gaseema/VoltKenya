@@ -1,0 +1,31 @@
+name: Deploy VoltKenya
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Copy environment file
+        run: cp /var/www/voltkenya/.env .env
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Prisma Generate
+        run: npx prisma generate
+
+      - name: Build application
+        run: npm run build
+
+      - name: Deploy with PM2
+        run: |
+          pm2 delete voltkenya || true
+          pm2 start npm --name "voltkenya" -- start
+          pm2 save
