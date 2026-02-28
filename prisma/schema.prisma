@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id           String        @id @default(cuid())
+  email        String        @unique
+  role         String        @default("USER") // ADMIN | USER
+  isVerified   Boolean       @default(false)
+  transactions Transaction[]
+  createdAt    DateTime      @default(now())
+}
+
+model Otp {
+  id        String   @id @default(cuid())
+  email     String
+  code      String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Bike {
+  id              String        @id @default(cuid())
+  name            String
+  price           Float
+  deposit         Float
+  range           String
+  topSpeed        String
+  images          String // We will store as JSON string array of URLs
+  description     String?
+  chargeTime      String?
+  originalPrice   Float?
+  licenseRequired Boolean       @default(false)
+  tag             String?
+  tagColor        String?
+  transactions    Transaction[]
+  createdAt       DateTime      @default(now())
+}
+
+model Transaction {
+  id           String   @id @default(cuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  bikeId       String
+  bike         Bike     @relation(fields: [bikeId], references: [id])
+  amount       Float
+  nationalId   String
+  mpesaCode    String   @unique
+  status       String   @default("PENDING") // PENDING | COMPLETED | CANCELLED
+  idFrontUrl   String?
+  idBackUrl    String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
