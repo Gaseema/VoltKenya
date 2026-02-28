@@ -28,6 +28,6 @@ jobs:
 
       - name: Deploy with PM2
         run: |
-          pm2 delete voltkenya || true
-          pm2 start npm --name "voltkenya" -- start
-          pm2 save
+          sudo -u ubuntu pm2 delete voltkenya || true
+          sudo -u ubuntu pm2 start npm --name "voltkenya" -- start
+          sudo -u ubuntu pm2 save
