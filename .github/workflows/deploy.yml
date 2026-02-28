@@ -8,6 +8,8 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
+    env:
+      NODE_OPTIONS: "--max-old-space-size=1536"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
