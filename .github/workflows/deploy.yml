@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
+    # Increased memory limit to support build with swap
     env:
       NODE_OPTIONS: "--max-old-space-size=1536"
     steps:
