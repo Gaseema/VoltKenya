@@ -34,6 +34,8 @@ jobs:
 
       - name: Deploy with PM2
         run: |
+          # Kill any process on port 3020 to prevent EADDRINUSE
+          sudo fuser -k 3020/tcp || true
           sudo -u ubuntu pm2 delete voltkenya || true
           sudo -u ubuntu pm2 start npm --name "voltkenya" -- start
           sudo -u ubuntu pm2 save
