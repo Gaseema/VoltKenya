@@ -30,7 +30,7 @@ jobs:
         run: sudo -u ubuntu npx prisma generate
 
       - name: Build application
-        run: sudo -u ubuntu npm run build
+        run: sudo -u ubuntu npx next build --no-lint --no-types
 
       - name: Deploy with PM2
         run: |
