@@ -29,6 +29,9 @@ jobs:
       - name: Run Prisma Generate
         run: sudo -u ubuntu npx prisma generate
 
+      - name: Sync Database Schema
+        run: sudo -u ubuntu npx prisma db push
+
       - name: Build application
         run: sudo -u ubuntu npx next build --no-lint --no-types
 
