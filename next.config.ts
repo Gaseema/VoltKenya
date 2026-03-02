@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   eslint: {
-    // This replaces the broken --no-lint flag
+    // Correct way to ignore ESLint during builds in modern Next.js
     ignoreDuringBuilds: true,
   },
   images: {
