@@ -1,12 +1,4 @@
 {
-  "/api/auth/send-otp/route": "app/api/auth/send-otp/route.js",
   "/api/auth/session/route": "app/api/auth/session/route.js",
-  "/api/auth/verify-otp/route": "app/api/auth/verify-otp/route.js",
-  "/api/checkout/route": "app/api/checkout/route.js",
-  "/catalog/page": "app/catalog/page.js",
-  "/checkout/page": "app/checkout/page.js",
-  "/checkout/success/page": "app/checkout/success/page.js",
-  "/page": "app/page.js",
-  "/product/[id]/page": "app/product/[id]/page.js",
-  "/profile/page": "app/profile/page.js"
+  "/page": "app/page.js"
 }

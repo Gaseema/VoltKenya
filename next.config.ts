@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  typescript: {
+    // This replaces the broken --no-types flag
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    // This replaces the broken --no-lint flag
+    ignoreDuringBuilds: true,
+  },
   images: {
     remotePatterns: [
       {

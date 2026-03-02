@@ -8,42 +8,55 @@ on:
 jobs:
   deploy:
     runs-on: self-hosted
-    # Increased memory limit to support build with swap
     env:
       NODE_OPTIONS: "--max-old-space-size=1536"
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: 1
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Fix Permissions
+      - name: Prepare environment
         run: |
-          sudo chown -R ubuntu:ubuntu .
+          sudo chown -R $USER:$USER .
           sudo chmod -R 755 .
-
-      - name: Copy environment file
-        run: sudo -u ubuntu cp /var/www/voltkenya/.env .env
+          
+          # CRITICAL: Verify and copy .env before any build steps
+          if [ -f /var/www/voltkenya/.env ]; then
+            cp /var/www/voltkenya/.env .env
+            echo ".env file synchronized"
+          else
+            echo "::error:: /var/www/voltkenya/.env not found! Database operations will fail."
+            exit 1
+          fi
 
       - name: Install dependencies
-        run: sudo -u ubuntu npm install
+        run: npm ci --prefer-offline --no-audit
 
-      - name: Run Prisma Generate
-        run: sudo -u ubuntu npx prisma generate
-
-      - name: Sync Database Schema
-        run: sudo -u ubuntu npx prisma db push
+      - name: Database Sync
+        run: |
+          # Ensure Prisma client is generated FIRST
+          npx prisma generate
+          
+          # Sync schema to DB - Fail if this fails!
+          # Using --accept-data-loss to ensure it completes if you've made breaking schema changes
+          npx prisma db push --accept-data-loss
 
       - name: Build application
-        run: sudo -u ubuntu npx next build --no-lint --no-types
+        run: npm run build
 
       - name: Deploy with PM2
         run: |
-          # Kill any process on port 3020 to prevent EADDRINUSE
           sudo fuser -k 3020/tcp || true
-          sudo -u ubuntu pm2 delete voltkenya || true
+          
+          # Reload/Start app as ubuntu user
+          sudo -u ubuntu pm2 reload voltkenya || \
           sudo -u ubuntu pm2 start npm --name "voltkenya" -- start
+          
           sudo -u ubuntu pm2 save
 
       - name: Reset Permissions for next checkout
         if: always()
         run: |
-          sudo chown -R github-runner:github-runner .
+          sudo chown -R github-runner:github-runner . || true

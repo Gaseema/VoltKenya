@@ -1,18 +1,1 @@
-[00:00:01.158] Server  LOG     ✓ Ready in 960ms
-[00:00:13.675] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:55.903] Server  WARN    ⚠ Cross origin request detected from 192.168.100.27 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:00:55.957] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:57.394] Server  ERROR   ⨯ "upstream image" "https://media.istockphoto.com/id/636379014/photo/hands-forming-a-heart-shape-with-sunset-silhouette.jpg?s=612x612&w=0&k=20&c=CgjWWGEasjgwia2VT7ufXa10azba2HXmUDe96wZG8F0=" "resolved to private ip" "[\"64:ff9b::3af:b32d\",\"64:ff9b::3af:b367\",\"64:ff9b::3af:b304\",\"64:ff9b::3af:b312\"]"
-[00:01:17.166] Server  ERROR   ⨯ "upstream image" "https://media.istockphoto.com/id/636379014/photo/hands-forming-a-heart-shape-with-sunset-silhouette.jpg?s=612x612&w=0&k=20&c=CgjWWGEasjgwia2VT7ufXa10azba2HXmUDe96wZG8F0=" "resolved to private ip" "[\"64:ff9b::3af:b32d\",\"64:ff9b::3af:b367\",\"64:ff9b::3af:b304\",\"64:ff9b::3af:b312\"]"
-[00:01:25.594] Server  ERROR   ⨯ "upstream image" "https://media.istockphoto.com/id/636379014/photo/hands-forming-a-heart-shape-with-sunset-silhouette.jpg?s=612x612&w=0&k=20&c=CgjWWGEasjgwia2VT7ufXa10azba2HXmUDe96wZG8F0=" "resolved to private ip" "[\"64:ff9b::3af:b32d\",\"64:ff9b::3af:b367\",\"64:ff9b::3af:b304\",\"64:ff9b::3af:b312\"]"
-[00:01:45.009] Server  LOG     
-
-[DEV MODE] 📧 Fake sending OTP to hshsh@g.com ...
-[00:01:45.009] Server  LOG     [DEV MODE] 🔑 Your OTP Code is: 731270
-
-
-[00:01:54.249] Server  ERROR   ⨯ "upstream image" "https://media.istockphoto.com/id/636379014/photo/hands-forming-a-heart-shape-with-sunset-silhouette.jpg?s=612x612&w=0&k=20&c=CgjWWGEasjgwia2VT7ufXa10azba2HXmUDe96wZG8F0=" "resolved to private ip" "[\"64:ff9b::3af:b32d\",\"64:ff9b::3af:b367\",\"64:ff9b::3af:b304\",\"64:ff9b::3af:b312\"]"
-[00:01:55.728] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:01.360] Server  ERROR   ⨯ "upstream image" "https://media.istockphoto.com/id/636379014/photo/hands-forming-a-heart-shape-with-sunset-silhouette.jpg?s=612x612&w=0&k=20&c=CgjWWGEasjgwia2VT7ufXa10azba2HXmUDe96wZG8F0=" "resolved to private ip" "[\"64:ff9b::3af:b32d\",\"64:ff9b::3af:b367\",\"64:ff9b::3af:b304\",\"64:ff9b::3af:b312\"]"
-[00:03:01.629] Server  ERROR   ⨯ "upstream image" "https://media.istockphoto.com/id/636379014/photo/hands-forming-a-heart-shape-with-sunset-silhouette.jpg?s=612x612&w=0&k=20&c=CgjWWGEasjgwia2VT7ufXa10azba2HXmUDe96wZG8F0=" "resolved to private ip" "[\"64:ff9b::3af:b32d\",\"64:ff9b::3af:b367\",\"64:ff9b::3af:b304\",\"64:ff9b::3af:b312\"]"
+[00:00:01.120] Server  LOG     ✓ Ready in 843ms
